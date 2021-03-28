@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/UserStyle.css}">
+<title>Manage courses</title>
+</head>
+<body>
+<ul th:replace="Layout :: studentNavBar"></ul>
+	
+	<form action="/students/enrollForCourse" method="POST">
+		<div class="wrapper">
+			<div class="container">
+		  		<h4>Available courses</h4> 
+		     		<div class="row">
+		      			<div class="col-25">
+		        			<p>Course</p>
+		      			</div>
+		      			<div class="col-75">
+		       				<select th:name="enrollingCourse" required="required">
+		       					<option th:value="${availableCourse.courseId}" th:each="availableCourse : ${availableCourses}" th:text="${availableCourse.courseName + ' ' + availableCourse.startDate + '  /  ' + availableCourse.endDate}"></option>
+		       				</select>
+		       			<div>
+		       				 <p>*Courses that reached the maximum amount of students or are already started, are not available anymore.</p>
+		      			</div>
+		      			<div class="col-75">
+		      				<input style="margin-right: 25px" type="submit" value="Enroll for course"> 	
+		      			</div>
+		    		</div>
+		   		</div>
+		  	</div> 
+		</div>
+	</form>
+	
+		<div class="wrapper">
+			<div class="container">
+		  		<h4>Enrolled Courses (not started)</h4> 
+		   	<div>
+		   		<table id="tablestyle">
+		   			<tr>
+		   				<th>Course name</th>
+		   				<th>Start date</th>
+		   				<th>End date</th> 
+		   			</tr>
+		   			<tr th:each="enrolledCourse : ${enrolledCourses}">
+		   				<td th:text="${enrolledCourse.courseName}"></td>
+		   				<td th:text="${enrolledCourse.startDate}"></td>
+		   				<td th:text="${enrolledCourse.endDate}"></td>
+		   			</tr>
+		   		</table>
+		   	</div>
+		   </div>
+		</div> 
+
+
+</body>
+</html>

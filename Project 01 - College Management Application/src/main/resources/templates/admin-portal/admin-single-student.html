@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage single student account</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+
+	<div class="wrapper">
+		<div class="container">
+		  
+		  	<h4 th:text="${student.firstName} + ' ' + ${student.lastName}"></h4> 
+		    
+		     <div class="row">
+		      <div class="col-25">
+		        <p>Student ID:</p>
+		      </div>
+		      <div class="col-75">
+		        <p th:text="${student.studentId}"></p>
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <p>Email:</p>
+		      </div>
+		      <div class="col-75">
+		        <p th:text="${student.email}"></p>
+		      </div>
+		    </div>
+		</div>
+	</div>  
+		    
+
+
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/resetStudentPassword" method="POST" th:object="${student}">
+		  	<h4>Reset password</h4>
+		    
+		    <input type="hidden" value="123456789" name="password">
+		   	<input type="hidden" th:field="${student.studentId}" name="studentId">
+		   		    
+		    <div class="row">
+		        <p>*Password will be reset to: "123456789".</p>
+		     </div>
+		   
+		    <div class="row">	
+		      <input type="submit" value="Reset">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+
+	<div class="wrapper">
+		<div class="container">
+		  
+		  	<h4>Grades</h4> 
+			<table id="tablestyle">
+				<tr>
+					<th>Course</th>
+					<th>Grade</th>
+				</tr>
+				<tr th:each="grade : ${grades}">
+					<td th:text="${grade.theCourse.courseName}"></td>
+					<td th:text="${grade.grade}"></td>
+				</tr>
+			
+			</table>    
+		
+		</div>
+	</div>  
+
+</body>
+</html>

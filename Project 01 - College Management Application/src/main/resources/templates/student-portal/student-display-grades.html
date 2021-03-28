@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/UserStyle.css}">
+<title>Grades</title>
+</head>
+<body>
+<ul th:replace="Layout :: studentNavBar"></ul>
+
+	<div class="wrapper">
+			<div class="container">
+		  		<h4>Grades</h4> 
+		   	<div>
+		   		<table id="tablestyle">
+		   			<tr>
+		   				<th>Course name</th>
+		   				<th>Grade</th>
+		   			 	</tr>
+		   			<tr th:each="grade : ${grades}">
+		   				<td th:text="${grade.theCourse.courseName}"></td>
+		   				<td th:text="${grade.grade}"></td>
+		   			  </tr>
+		   		</table>
+		   	</div>
+		   </div>
+		</div> 
+
+
+</body>
+</html>

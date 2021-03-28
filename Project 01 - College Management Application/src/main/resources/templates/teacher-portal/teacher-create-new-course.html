@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Create new course</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: teacherNavBar"></ul>
+
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/teachers/saveCourse" method="POST" th:object="${course}">
+		  	<h4>Create new course</h4>
+		    <div class="row">
+		      <div class="col-25password">
+		        <label for="courseName">Course Name</label>
+		      </div>
+		      <div class="col-75password">
+		        <input type="text" th:field="${course.courseName}" id="courseName" name="courseName" placeholder="Course name" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25password">
+		        <label for="maxstudents">Max amount of students</label>
+		      </div>
+		      <div class="col-75password">
+		        <input type="number" th:field="${course.maxStudents}" id="maxStudents" name="maxStudents" placeholder="Maximum amount of students" required="required">
+		      </div>
+		    </div>
+		    
+		     <div class="row">
+		      <div class="col-25password">
+		        <label for="startDate">First Lesson</label>
+		      </div>
+		      <div class="col-75password">
+		        <input type="date" th:field="${course.startDate}" id="startDate" name="startDate" placeholder="StartDate" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25password">
+		        <label for="endDate">Last Lesson</label>
+		      </div>
+		      <div class="col-75password">
+		        <input type="date" th:field="${course.endDate}" id="endDate" name="endDate" placeholder="endDate" required="required">
+		      </div>
+		    </div>
+		    
+		       <div class="row">
+		      <div class="col-25password">
+		        <label for="courseStage">Course stage</label>
+		      </div>
+		      <div class="col-75password">
+		        <select th:field="${course.stage}" id="courseStage" name="courseStage" required="required">
+		        	<option th:value="NOTSTARTED">NOTSTARTED</option>
+					<option th:value="INPROGRESS">INPROGRESS</option>
+					<option th:value="COMPLETED">COMPLETED</option>	
+		        </select>
+		      </div>
+		    </div>
+		        	   
+		    <div class="row">	
+		      <input type="submit" value="Create">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+
+</body>
+</html>

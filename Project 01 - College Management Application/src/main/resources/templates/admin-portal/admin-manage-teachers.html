@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage Teachers</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+	
+		<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/saveTeacher" method="POST" th:object="${teacher}">
+		  	<h4>Create new teacher account</h4>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="firstName">First Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" th:field="${teacher.firstName}" id="firstName" name="firstName" placeholder="Teacher's first name" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="lastName">Last Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" th:field="${teacher.lastName}" id="lastName" name="lastName" placeholder="Teacher's last name" required="required">
+		      </div>
+		    </div>
+		    
+		     <div class="row">
+		      <div class="col-25">
+		        <label for="email">Email</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="email" th:field="${teacher.email}" id="email" name="email" placeholder="Teacher's email address" required="required">
+		      </div>
+		    </div>
+		    
+		    <input type="hidden" value="Teacher543210" name="password">
+		    
+		    <div class="row">
+		        <p>*Default password for every new teacher account is: "Teacher543210".</p>
+		     </div>
+		   
+		    <div class="row">	
+		      <input type="submit" value="Create">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/searchTeacher" method="POST">
+		  	<h4>Manage single teacher account</h4>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="firstName">First Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" id="firstName" name="firstName" placeholder="Teacher's first name" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="lastName">Last Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" id="lastName" name="lastName" placeholder="Teacher's last name" required="required">
+		      </div>
+		    </div>
+		   
+		    <div class="row">	
+		      <input type="submit" value="Search teacher">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/displayAllTeachers" method="GET">
+		  	<h4>Display all teachers</h4>
+		    <div class="row">	
+		      <input type="submit" value="Display all teachers">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,164 @@
+@charset "ISO-8859-1";
+
+body {
+	background-color: #b4dce4;
+	font-family: Helvetica, sans-serif;
+}
+
+/* ----------------------- NAVIGATION BAR ----------------------- */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.active {
+  background-color:#F08080;
+  color: white;
+}
+
+/* --------------------- FORM STYLE ------------------ */
+
+.wrapper {
+	padding-top: 10px;
+	
+}
+
+input[type=text],input[type=password], input[type=email], input[type=date], input[type=number], select, textarea {
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color:#F08080;
+  color: white;
+  padding: 12px 20px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.container {
+	
+  width: 600px;	
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.containerTeachers{
+  width: 900px;	
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}	
+
+
+.col-25 {
+  float: left;
+  width: 100px;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 500px;
+  margin-top: 6px;
+}
+
+.col-25password {
+  float: left;
+  width: 200px;
+  margin-top: 6px;
+}
+
+.col-75password {
+  float: left;
+  width: 400px;
+  margin-top: 6px;
+}
+
+.col-75teachers{
+  float: left;
+  width: 800px;
+  margin-top: 6px;
+}
+
+.colGradeName{
+	float: left;
+	width: 180px;
+	margin-top: 6px;
+}
+
+.colGrade{
+	float: left;
+	width: 80px;
+	margin-top: 6px
+}
+
+.colSetGrade{
+	float: left;
+	width: 50x;
+	margin-top: 6px;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* --------------------- TABLE STYLE ------------------ */
+
+#tablestyle {
+
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tablestyle td, #tablestyle th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 12px
+}
+
+#tablestyle tr:nth-child(even){background-color: #f2f2f2;}
+
+#tablestyle tr:hover {background-color: #ddd;}
+
+#tablestyle th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #F08080;
+  color: white;
+}

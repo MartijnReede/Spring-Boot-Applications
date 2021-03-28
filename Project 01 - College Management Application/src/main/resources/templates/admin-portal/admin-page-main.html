@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" th:href="@{css/UserStyle.css}">
+<title>Admin Dashboard</title>
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/ManageAccount" method="GET">
+		     <div class="row">
+		      <div class="col-75">
+		        <b><p style="font-size: 20px" th:text="${'Welcome' + ' ' + user.firstName + ' ' + user.lastName}"></p></b>
+		      </div>
+		      <div class="col-25">
+		           <input type="submit" value="Show account info">
+		      </div>
+		    </div>
+		  </form>
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="container">
+		  	<h4>Dashboard</h4>
+		    <table id="tablestyle">
+		    	<tr>
+		    		<th>Data</th>
+		    		<th>Value</th>
+		    	</tr>
+		    	<tr>
+		    		<td>Total amount of students</td>
+		    		<td th:text="${studentAmount}"></td>
+		    	</tr>
+		    	<tr>
+		    		<td>Total amount of teachers</td>
+		    		<td th:text="${teacherAmount}"></td>
+		    	</tr>
+		    	<tr>
+		    		<td>Average grade of all students</td>
+		    		<td th:text="${averageGrade}"></td>
+		    	</tr>
+		    </table>  
+		    </div>  	
+		</div>
+	</div>
+
+</body>
+</html>

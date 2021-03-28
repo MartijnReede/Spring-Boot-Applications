@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage single teacher account</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+
+	<div class="wrapper">
+		<div class="container">
+		  
+		  	<h4 th:text="${teacher.firstName} + ' ' + ${teacher.lastName}"></h4> 
+		    
+		     <div class="row">
+		      <div class="col-25">
+		        <p>Teacher ID:</p>
+		      </div>
+		      <div class="col-75">
+		        <p th:text="${teacher.teacherId}"></p>
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <p>Email:</p>
+		      </div>
+		      <div class="col-75">
+		        <p th:text="${teacher.email}"></p>
+		      </div>
+		    </div>
+		</div>
+	</div>  
+		    
+
+
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/resetTeacherPassword" method="POST" th:object="${teacher}">
+		  	<h4>Reset password</h4>
+		    
+		    <input type="hidden" value="Teacher543210" name="password">
+		   	<input type="hidden" th:field="${teacher.teacherId}" name="teacherId">
+		   		    
+		    <div class="row">
+		        <p>*Password will be reset to: "Teacher543210".</p>
+		     </div>
+		   
+		    <div class="row">	
+		      <input type="submit" value="Reset">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+
+	<div class="wrapper">
+		<div class="container">
+		  	<h4>Courses and average grades</h4>
+		  	
+		  	<table id="tablestyle">
+		  		<tr>
+		  			<th>Course</th>
+		  			<th>Average grade</th>
+		  		</tr>
+		  		<tr th:each="entry : ${averageGrades}">
+		  			<td th:text="${entry.key}"></td>
+		  			<td th:text="${entry.value}"></td>
+		  		</tr>
+		  	</table> 
+		</div>
+	</div>  
+
+
+</body>
+</html>

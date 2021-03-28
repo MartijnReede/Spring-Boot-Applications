@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" th:href="@{CSS/UserStyle.css}">
+<title>Teacher Dashboard</title>
+</head>
+<body>
+
+<ul th:replace="Layout :: teacherNavBar"></ul>
+
+	<div class="wrapper">
+		<div class="containerTeachers">
+		  <form action="/teachers/ManageAccount" method="GET">
+		     <div class="row">
+		      <div class="col-75teachers">
+		        <b><p style="font-size: 20px" th:text="${'Welcome' + ' ' + user.firstName + ' ' + user.lastName}"></p></b>
+		      </div>
+		      <div class="col-25">
+		           <input type="submit" value="Show account info">
+		      </div>
+		    </div>
+		  </form>
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="containerTeachers">
+		  	<h4>Courses not started</h4>
+		    <table id="tablestyle">
+		    	<tr>
+		    		<th>Course Name</th>
+		    		<th>Course Start</th>
+		    		<th>Course End</th>
+		    		<th>Students Enrolled</th>
+		    		<th>Max Students</th>
+		    	</tr>
+		    	<tr th:each="course : ${notStarted}">
+		    		<td th:text="${course.courseName}"></td>
+		    		<td th:text="${course.startDate}"></td>
+		    		<td th:text="${course.endDate}"></td>
+		    		<td th:text="${course.students.size()}">
+		    		<td th:text="${course.maxStudents}">
+		    	</tr>
+		    </table>  	
+		</div>
+	</div>
+	
+		<div class="wrapper">
+		<div class="containerTeachers">
+		  	<h4>Courses in progress</h4>
+		    <table id="tablestyle">
+		    	<tr>
+		    		<th>Course Name</th>
+		    		<th>Course Start</th>
+		    		<th>Course End</th>
+		    		<th>Students Enrolled</th>
+		    		<th>Max Students</th>
+		    	</tr>
+		    	<tr th:each="course : ${inProgress}">
+		    		<td th:text="${course.courseName}"></td>
+		    		<td th:text="${course.startDate}"></td>
+		    		<td th:text="${course.endDate}"></td>
+		    		<td th:text="${course.students.size()}">
+		    		<td th:text="${course.maxStudents}">
+		    	</tr>
+		    </table>  	
+		</div>
+	</div>
+
+	<div class="wrapper">
+		<div class="containerTeachers">
+		  	<h4>Courses completed</h4>
+		    <table id="tablestyle">
+		    	<tr>
+		    		<th>Course Name</th>
+		    		<th>Course Start</th>
+		    		<th>Course End</th>
+		    		<th>Students Enrolled</th>
+		    		<th>Max Students</th>
+		    	</tr>
+		    	<tr th:each="course : ${completed}">
+		    		<td th:text="${course.courseName}"></td>
+		    		<td th:text="${course.startDate}"></td>
+		    		<td th:text="${course.endDate}"></td>
+		    		<td th:text="${course.students.size()}">
+		    		<td th:text="${course.maxStudents}">
+		    	</tr>
+		    </table>  	
+		</div>
+	</div>
+
+</body>
+</html>

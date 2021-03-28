@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage Admins</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+ 	
+ 	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/saveAdmin" method="POST" th:object="${admin}">
+		  	<h4>Create new admin account</h4>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="firstName">First Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" th:field="${admin.firstName}" id="firstName" name="firstName" placeholder="Admin's first name" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="lastName">Last Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" th:field="${admin.lastName}" id="lastName" name="lastName" placeholder="Admin's last name" required="required">
+		      </div>
+		    </div>
+		    
+		     <div class="row">
+		      <div class="col-25">
+		        <label for="email">Email</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="email" th:field="${admin.email}" id="email" name="email" placeholder="Admin's email address" required="required">
+		      </div>
+		    </div>
+		    
+		    <input type="hidden" value="!12345Admin67890%" name="password">
+		    
+		    <div class="row">
+		        <p>*Default password for every new admin account is: "!12345Admin67890%".</p>
+		     </div>
+		   
+		    <div class="row">	
+		      <input type="submit" value="Create">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+	
+	<div class="wrapper">
+		<div class="container">
+		<h4>All admins</h4>
+			<table id="tablestyle">
+				<tr>
+					<th>Admin ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+				</tr>
+				<tr th:each="admin : ${allAdmins}">
+					<td th:text="${admin.adminId}"></td>
+					<td th:text="${admin.firstName}"></td>
+					<td th:text="${admin.lastName}"></td>
+					<td th:text="${admin.email}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

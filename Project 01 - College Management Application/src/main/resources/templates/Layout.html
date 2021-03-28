@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+</head>
+<body>
+
+<ul th:fragment="studentNavBar">
+  <li><a href="/students">Dashboard</a></li>
+  <li><a href="/students/manageCourses">Manage Courses</a></li>
+  <li><a href="/students/displayGrades">Display Grades</a></li>
+  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+<ul th:fragment="teacherNavBar">
+  <li><a href="/teachers">Dashboard</a></li>
+   <li><a href="/teachers/createNewCourse">Create new course</a></li>
+  <li><a href="/teachers/manageCourses">Manage courses</a></li>
+  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+<ul th:fragment="adminNavBar">
+  <li><a href="/admin">Dashboard</a></li>
+  <li><a href="/admin/ManageStudents">Manage students</a></li>
+  <li><a href="/admin/ManageTeachers">Manage teachers</a></li>
+  <li><a href="/admin/ManageAdmins">Manage admins</a></li>
+  <li style="float:right"><a class="active" href="/logout">Logout</a></li>
+</ul>
+
+
+</body>
+</html>

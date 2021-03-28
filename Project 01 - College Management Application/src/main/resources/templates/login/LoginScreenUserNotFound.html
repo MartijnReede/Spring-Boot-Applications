@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Login</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{CSS/LoginScreen.css}">
+</head>
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/authorisation" method="POST">
+		    <label class="incorrect" for="email">Username or password incorrect!</label>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="email">Email</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" id="email" name="email" placeholder="Your email address...">
+		      </div>
+		    </div>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="password">Password</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="password" id="password" name="password" placeholder="Your password...">
+		      </div>
+		    </div>
+		    <div class="row">
+		      <input type="submit" value="Submit">
+		    </div>
+		  </form>
+		</div>
+	</div>	
+</body>
+</html>

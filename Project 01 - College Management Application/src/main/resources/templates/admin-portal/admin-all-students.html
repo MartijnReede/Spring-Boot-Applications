@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>All students</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+
+<div class="wrapper">
+		<div class="container">
+		<h4>All students</h4>
+			<table id="tablestyle">
+				<tr>
+					<th>Student ID</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+				</tr>
+				<tr th:each="student : ${allStudents}">
+					<td th:text="${student.studentId}"></td>
+					<td th:text="${student.firstName}"></td>
+					<td th:text="${student.lastName}"></td>
+					<td th:text="${student.email}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+</body>
+</html>
