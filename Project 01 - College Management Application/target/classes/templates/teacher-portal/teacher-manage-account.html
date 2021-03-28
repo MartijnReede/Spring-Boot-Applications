@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage account</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: teacherNavBar"></ul>
+	<div class="wrapper">
+		<div class="container">
+		  	<h4 th:text="${teacher.firstName} + ' ' + ${teacher.lastName}"></h4> 
+		     <div class="row">
+		      <div class="col-25">
+		        <p>Teacher ID:</p>
+		      </div>
+		      <div class="col-75">
+		        <p th:text="${teacher.teacherId}"></p>
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <p>Email:</p>
+		      </div>
+		      <div class="col-75">
+		        <p th:text="${teacher.email}"></p>
+		      </div>
+		    </div>
+		</div>
+	</div>  
+	
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/teachers/changePassword" method="POST">
+		  	<h4>Change password</h4>
+		    <div class="row">
+		      <div class="col-25password">
+		        <label for="oldPassword">Old Password</label>
+		      </div>
+		      <div class="col-75password">
+		        <input type="password" id="oldPassword" name="oldPassword" placeholder="Your old password" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25password">
+		        <label for="newPassword">New Password</label>
+		      </div>
+		      <div class="col-75password">
+		        <input type="password" id="newPassword" name="newPassword" placeholder="Your new password" required="required">
+		      </div>
+		    </div>
+		    
+		     <div class="row">
+		      <div class="col-25password">
+		        <label for="newPassword2">Confirm New Password</label>
+		      </div>
+		      <div class="col-75password">
+		        <input type="password" id="newPassword2" name="newPassword2" placeholder="Confirm new password" required="required">
+		      </div>
+		    </div>
+		    
+		   <div class="row">	
+		      <input type="submit" value="Change password">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/UserStyle.css}">
+<title>Student Dashboard</title>
+</head>
+<body>
+<ul th:replace="Layout :: studentNavBar"></ul>
+	
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/students/ManageAccount" method="GET">
+		     <div class="row">
+		      <div class="col-75">
+		        <b><p style="font-size: 20px" th:text="${'Welcome' + ' ' + user.firstName + ' ' + user.lastName}"></p></b>
+		      </div>
+		      <div class="col-25">
+		           <input type="submit" value="Show account info">
+		      </div>
+		    </div>
+		  </form>
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="container">
+		  	<h4>Current courses</h4>
+		    <table id="tablestyle">
+		    	<tr>
+		    		<th>Course Name</th>
+		    		<th>Course Start</th>
+		    		<th>Course End</th>
+		    	</tr>
+		    	<tr th:each="course : ${inProgress}">
+		    		<td th:text="${course.courseName}"></td>
+		    		<td th:text="${course.startDate}"></td>
+		    		<td th:text="${course.endDate}"></td>
+		    	</tr>
+		    </table>  	
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="container">
+		  	<h4>Not started courses</h4>
+		    <table id="tablestyle">
+		    	<tr>
+		    		<th>Course Name</th>
+		    		<th>Course Start</th>
+		    		<th>Course End</th>
+		    	</tr>
+		    	<tr th:each="course : ${notStarted}">
+		    		<td th:text="${course.courseName}"></td>
+		    		<td th:text="${course.startDate}"></td>
+		    		<td th:text="${course.endDate}"></td>
+		    	</tr>
+		    </table>  	
+		</div>
+	</div>
+	
+		<div class="wrapper">
+		<div class="container">
+		  	<h4>Completed courses</h4>
+		    <table id="tablestyle">
+		    	<tr>
+		    		<th>Course Name</th>
+		    		<th>Course Start</th>
+		    		<th>Course End</th>
+		    	</tr>
+		    	<tr th:each="course : ${completed}">
+		    		<td th:text="${course.courseName}"></td>
+		    		<td th:text="${course.startDate}"></td>
+		    		<td th:text="${course.endDate}"></td>
+		    	</tr>
+		    </table>  	
+		</div>
+	</div>
+	
+</body>
+</html>

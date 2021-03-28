@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage Students</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: adminNavBar"></ul>
+
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/saveStudent" method="POST" th:object="${student}">
+		  	<h4>Create new student account</h4>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="firstName">First Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" th:field="${student.firstName}" id="firstName" name="firstName" placeholder="Student's first name" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="lastName">Last Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" th:field="${student.lastName}" id="lastName" name="lastName" placeholder="Student's last name" required="required">
+		      </div>
+		    </div>
+		    
+		     <div class="row">
+		      <div class="col-25">
+		        <label for="email">Email</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="email" th:field="${student.email}" id="email" name="email" placeholder="Student's email address" required="required">
+		      </div>
+		    </div>
+		    
+		    <input type="hidden" value="123456789" name="password">
+		    
+		    <div class="row">
+		        <p>*Default password for every new student account is: "123456789".</p>
+		     </div>
+		   
+		    <div class="row">	
+		      <input type="submit" value="Create">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/searchStudent" method="POST">
+		  	<h4>Manage single student account</h4>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="firstName">First Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" id="firstName" name="firstName" placeholder="Student's first name" required="required">
+		      </div>
+		    </div>
+		    
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="lastName">Last Name</label>
+		      </div>
+		      <div class="col-75">
+		        <input type="text" id="lastName" name="lastName" placeholder="Student's last name" required="required">
+		      </div>
+		    </div>
+		   
+		    <div class="row">	
+		      <input type="submit" value="Search student">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/admin/displayAllStudents" method="GET">
+		  	<h4>Display all students</h4>
+		    <div class="row">	
+		      <input type="submit" value="Display all students">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Manage Courses</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/UserStyle.css}">
+</head>
+<body>
+<ul th:replace="Layout :: teacherNavBar"></ul>
+
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/teachers/manageTheCourse" method="GET">
+		  	<h4>Courses not started</h4>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="course">Course</label>
+		      </div>
+		      <div class="col-75">
+		        <select name="chosenCourse" required="required">
+		        	<option th:value="${course.courseId}" th:each="course : ${notStarted}" th:text="${course.courseName + ' ' + course.startDate + '  /  ' + course.endDate}"></option>
+		        </select>
+		      </div>
+		    </div>  	   
+		    <div class="row">	
+		      <input style="margin-right: 25px" type="submit" value="Select course">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+	<div class="wrapper">
+		<div class="container">
+		  <form action="/teachers/manageTheCourse" method="GET">
+		  	<h4>Courses in progress</h4>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="course">Course</label>
+		      </div>
+		      <div class="col-75">
+		        <select name="chosenCourse" required="required">
+		        	<option th:value="${course.courseId}" th:each="course : ${inProgress}" th:text="${course.courseName + ' ' + course.startDate + '  /  ' + course.endDate}"></option>
+		        </select>
+		      </div>
+		    </div>  	   
+		    <div class="row">	
+		      <input style="margin-right: 25px" type="submit" value="Select course">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+	
+		<div class="wrapper">
+		<div class="container">
+		  <form action="/teachers/manageTheCourse" method="GET">
+		  	<h4>Courses completed</h4>
+		    <div class="row">
+		      <div class="col-25">
+		        <label for="course">Course</label>
+		      </div>
+		      <div class="col-75">
+		        <select name="chosenCourse" required="required">
+		        	<option th:value="${course.courseId}" th:each="course : ${completed}" th:text="${course.courseName + ' ' + course.startDate + '  /  ' + course.endDate}"></option>
+		        </select>
+		      </div>
+		    </div>  	   
+		    <div class="row">	
+		      <input style="margin-right: 25px" type="submit" value="Select course">
+		    </div>  	
+		  </form>
+		</div>
+	</div>
+
+</body>
+</html>
