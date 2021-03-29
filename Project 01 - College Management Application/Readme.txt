@@ -24,6 +24,8 @@ Each account type has its own specific functionality.
 Student dashboard: 
   - The students can see all the courses they are enrolled in. 
   - The courses are divided in three categories: not started, in progress or completed. 
+  - There is a button to view personal account information. Here the students can view their
+  account info and change their password. 
   
 Manage courses:
   - The students can enroll for available courses. Available courses are courses that are in the "not started" 
@@ -35,6 +37,23 @@ Grades:
   
 -- TEACHER ACCOUNT --
 
+Teacher dashboard:
+  - The teachers can see all their personal courses. These courses are also divided into three categories:
+  not started, in progress or completed. The teachers can see how many students are enrolled in their courses.
+  - There is a button to view personal account information. Here the teachers can view their account info and
+  change their password. 
+  
+Create new course:
+  - Teachers can create new courses here. 
+
+Manage courses:
+  - Teachers can select a specific course here. Course information will be displayed, the current stage of the
+  course can be changed and grades can be assigned to all the students that are enrolled in the selected course.
+  
+-- ADMIN ACCOUNT --
+
+Admin dashboard: 
+  - 
 
 
   
