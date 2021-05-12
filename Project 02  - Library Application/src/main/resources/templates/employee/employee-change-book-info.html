@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Change book info</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+<ul th:replace="page-layout :: employeeNavBar"></ul>
+	<div class="container">
+		<h3>Change book information</h3>
+		
+		
+		<form action="/employee/books/savebookchange" th:object="${book}" th:method="PUT">	
+			<div class="row">
+				<div class="col-50">
+					<Label>Book ID: </Label>
+				</div>
+				<div class="col-75">
+					<label th:text="${book.bookId}"></label>
+					<input type="hidden" th:value="${book.bookId}" th:field="${book.bookId}">
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<Label>Title: </Label>
+				</div>
+				<div class="col-75">
+					<input type="text" th:value="${book.title}" th:field="${book.title}" required="required"/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Author:</label>
+				</div>
+				<div class="col-75">
+					<input type="text" th:value="${book.author}" th:field="${book.author}" required="required"/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Release year:</label>
+				</div>
+				<div class="col-75">
+					<input type="number" th:value="${book.releaseYear}" th:field="${book.releaseYear}" required="required"/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Edition:</label>
+				</div>
+				<div class="col-75">
+					<input type="number" th:value="${book.edition}" th:field="${book.edition}" required="required"/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Return date:</label>
+				</div>
+				<div th:if="${book.theUser != null}" class="col-75">
+					<input type="text" th:value="${book.returnDate}" required="required" th:field="${book.returnDate}">
+				</div>
+				<div th:if="${book.theUser == null}" class="col-75">
+					<label>No return date available.</label>
+				</div>
+				<div th:if="${book.theUser != null}" class="col-75">
+					<Label>DD-MM-YYYY</label>
+				</div>
+				
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Current user:</label>
+				</div>
+				<div class="col-75">
+					<label th:if="${book.theUser == null}">No current user.</label>
+					<label th:if="${book.theUser != null}" th:text="${book.theUser.firstName} + ' ' +  ${book.theUser.lastName}"></label>
+				</div>
+				<div th:if="${book.theUser != null}" class="col-75" style="width: 450px">
+					<input type="checkbox" id="removeCurrentUser" name="removeCurrentUser">
+					<input type="hidden" th:value="${book.theUser}" th:field="${book.theUser}">
+					<label for="removeCurrentUser">Remove current user.</label>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Reserved from:</label>
+				</div>
+				<div th:if="${book.reservedByUser != null}" class="col-75">
+					<input type="text" th:value="${book.startReservationDate}" required="required" th:field=${book.startReservationDate}>
+				</div>
+				<div th:if="${book.reservedByUser == null}" class="col-75">
+					<label>No reservation date available.</label>
+				</div>
+				<div th:if="${book.reservedByUser != null}" class="col-75">
+					<label>DD-MM-YYYY</label>
+				</div>	
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Reserved until:</label>
+				</div>
+				<div th:if="${book.reservedByUser != null}" class="col-75">
+					<input type="text" th:value="${book.endReservationDate}" required="required" th:field=${book.endReservationDate}>
+				</div>
+				<div th:if="${book.reservedByUser == null}" class="col-75">
+					<label>No reservation date available.</label>
+				</div>
+				<div th:if="${book.reservedByUser != null}" class="col-75">
+					<label>DD-MM-YYYY</label>
+				</div>	
+			</div>
+			
+			<div class="row">
+				<div class="col-50">
+					<label>Reserved by user:</label>
+				</div>
+				<div class="col-75">
+					<label th:if="${book.reservedByUser == null}">No current user.</label>
+					<label th:if="${book.reservedByUser != null}" th:text="${book.reservedByUser.firstName} + ' ' +  ${book.reservedByUser.lastName}"></label>
+				</div>
+				<div th:if="${book.reservedByUser != null}" class="col-75" style="width: 450px">
+					<input type="checkbox" id="removeReservation" name="removeReservation">
+					<input type="hidden" th:value="${book.reservedByUser}" th:field="${book.reservedByUser}">
+					<label for="removeCurrentUser">Remove reservation and make book available.</label>
+				</div>
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-50">
+				</div>
+				<div class="col-75">
+					<input type="submit" value="Submit">
+					<input type="hidden" name="_csrf" th:value="${_csrf.token}">
+					<input type="hidden" name="_method" th:value="PUT">
+				</div>
+			</div>
+		</form>	
+	</div>
+</body>
+</html>

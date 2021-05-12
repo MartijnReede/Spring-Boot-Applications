@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Books</title>
+<link rel="styleSheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+<ul th:replace="page-layout :: employeeNavBar"></ul>
+	<div class="container">
+		<h3>Catalog</h3>
+		
+		<div class="row">
+			<form th:action="@{/employee/books/showbooks}" method="GET">
+				<div class="col-25">
+					<Label for="title">Title</Label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="title" name="title">
+				</div> 
+				
+				<div class="col-25">
+					<Label for="author">Author</Label>
+				</div>
+				<div class="col-75">
+					<input type="text" id="author" name="author">
+				</div>
+				<div>
+					<input type="submit" value="Search">
+				</div>
+			</form>
+			
+			<form th:action="@{/employee/books/showbooks}" method="GET">
+				<div>
+					<input style="margin-left: 20px" type="submit" value="Show all books" name="showAllBooks">
+				</div>
+			</form>
+			
+			<form th:action="@{/employee/books/newbook}" method="GET">
+				<div>
+					<input style="margin-left: 20px" type="submit" value="Add new book">
+				</div>
+			</form>	
+		</div>
+		<br/>
+		<table th:if="${books.size() > 0 }" id="tablestyle">
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Release Year</th>
+				<th>Edition</th>
+				<th>Return Date</th>
+				<th>Reserved From</th>
+				<th>Reserved Until</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="book : ${books}">
+				<td th:text="${book.title}"></td>
+				<td th:text="${book.author}"></td>
+				<td th:text="${book.releaseYear}"></td>
+				<td th:text="${book.edition}"></td>
+				<td th:text="${book.returnDate}"></td>
+				<td th:text="${book.startReservationDate}"></td>
+				<td th:text="${book.endReservationDate}"></td>
+				<td style="width: 240px;">
+					<form th:action="@{/employee/books/changebookinfo}" method="GET">
+						<input type="submit" value="Change info" class="table" style="width: 110px; margin-right: 6px"/>
+						<input type="hidden" th:value="${book.bookId}" name="changeBookId">
+					</form>
+					<form th:action="@{/employee/books/areyousuretodeletebook}" method="GET">
+						<input type="submit" value="Delete book" class="table" style="background-color: red; width: 110px;">
+						<input type="hidden" name="deleteBookId" th:value="${book.bookId}">
+					</form>
+				</td>
+				
+			</tr>
+			
+		</table>		
+	</div>
+</body>
+</html>

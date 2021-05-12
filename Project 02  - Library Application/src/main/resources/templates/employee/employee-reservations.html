@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Reservations</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: employeeNavBar"></ul>
+	
+	<div class="container">
+		<h3>Unprocessed reservations</h3>
+		
+		<div th:if="${unprocessedReservations.size() == 0}">
+			<p>No unprocessed reservations.</p>
+		</div>
+		
+		<div th:if="${unprocessedReservations.size() > 0}">		
+			<table id="tablestyle">
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Release Year</th>
+					<th>Edition</th>
+					<th>Reserved by</th>
+					<th>Reserved Until</th>
+					<th style="width: 260px">Ready for Pick Up</th>
+				</tr>
+				<tr th:each="book : ${unprocessedReservations}">
+					<td th:text="${book.title}"></td>
+					<td th:text="${book.author}"></td>
+					<td th:text="${book.releaseYear}"></td>
+					<td th:text="${book.edition}"></td>
+					<td th:text="${book.reservedByUser.firstName + ' ' + book.reservedByUser.lastName}"></td>
+					<td th:text="${book.endReservationDate}"></td>
+					<td>
+						<form th:action="@{/employee/setreadyforpickup}" th:method="PUT">
+							<input style="width: 250px" class="table" type="submit" value="Set book status to ready for pick-up">
+							<input type="hidden" th:name="_method" th:value="PUT">
+							<input type="hidden" name="bookId" th:value="${book.bookId}">
+							<input type="hidden" name="userId" th:value="${book.reservedByUser.userId}">
+						</form> 
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<h3>Processed reservations</h3>
+		<div th:if="${processedReservations.size() == 0}">
+			<p>No processed book reservations.</p>
+		</div>
+		
+		<div th:if="${processedReservations.size() > 0}">
+			<table id="tablestyle">
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Release Year</th>
+					<th>Edition</th>
+					<th>Reserved by</th>
+					<th>Reserved Until</th>
+				</tr>
+				<tr th:each="book : ${processedReservations}">
+					<td th:text="${book.title}"></td>
+					<td th:text="${book.author}"></td>
+					<td th:text="${book.releaseYear}"></td>
+					<td th:text="${book.edition}"></td>
+					<td th:text="${book.reservedByUser.firstName + ' ' + book.reservedByUser.lastName}"></td>
+					<td th:text="${book.endReservationDate}"></td>
+				</tr>
+			</table>
+		</div>
+		
+	</div>
+	
+
+</body>
+</html>

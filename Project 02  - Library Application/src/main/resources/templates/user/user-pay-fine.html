@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Pay fine</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+
+	<div class="container">	
+		
+		<h3>Extend book</h3>
+		
+		<table id="tablestyle">
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+			</tr>
+			<tr>
+				<td th:text="${book.title}"></td>
+				<td th:text="${book.author}"></td>
+			</tr>
+		</table>
+		<br/><br/>	
+		You are trying to extend the return date of a book that should have been returned to the library on <b><text th:text="${book.returnDate}"/></b>.
+		Since it wasn't extended or returned on time, a fine has built-up of <b>$ <text th:text="${fine}"/></b>. The return date for the book
+		can be extended when the fine is paid. The original return date will be extended by <b><text th:text="${weeksToExtend}"/></b> week(s).
+		<br/><br/>
+		
+		<div class="row">
+			<div class="col-75">
+				<form th:action="@{/user/yourbooks/dopayment}" method="POST">
+					<input style="width: 230px" type="submit" value="Pay fine and extend return date">
+					<input type="hidden" th:name="fineAmount" th:value="${fine}">
+					<input type="hidden" th:name="weeksToExtend" th:value="${weeksToExtend}">
+					<input type="hidden" th:name="bookId" th:value="${book.bookId}">
+				</form>
+			</div>
+			<div class="col-75">
+				<form th:action="@{/user/yourbooks}" method="GET">
+					<input style="width : 230px; background-color: red;" type="submit" value="Cancel">
+				</form>	
+			</div>	
+		</div>
+		
+		
+
+</body>
+</html>
