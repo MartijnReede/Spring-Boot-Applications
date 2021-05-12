@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book information changed</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	
+	<div class="container">
+		<h3>Book information changed</h3>
+		<form th:action="@{/employee/books/showbooks}" th:method="GET">
+			<div class="row">
+				<input type="submit" value="Go back to catalog">
+			</div>
+		</form>
+	</div>
+
+</body>
+</html>

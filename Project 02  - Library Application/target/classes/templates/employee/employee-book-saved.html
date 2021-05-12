@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Book Saved</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	
+	<div class="container">
+		<h3>Book saved!</h3>
+		<br/>
+		<div class="row">
+			<div class="col-50"> 
+				<form th:action="@{/employee/books}">
+					<input type="submit" value="Go back">	
+				</form>
+			</div>
+			<div class="col-50">
+				<form th:action="@{/employee/books/newbook}">
+					<input type="submit" value="Add another book">
+				</form>
+			</div>
+		</div>		
+	</div>
+
+</body>
+</html>

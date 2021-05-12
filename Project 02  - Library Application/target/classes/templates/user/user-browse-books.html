@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Browse Books</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+<ul th:replace="page-layout :: userNavBar"></ul>
+	
+	<div class="container">
+		<h3>Make reservation</h3>
+			
+			<p th:if="${listedBookReservations.size() == 0}">Select books to make a reservation.</p>
+			
+			<table id="tablestyle" th:if="${listedBookReservations.size() != 0}">
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Release Year</th>
+					<th>Edition</th>
+					<th>Reservation Period</th>
+					<th>Remove From List</th>
+				</tr>
+				<tr th:each="resBook : ${listedBookReservations}">
+					<td th:text="${resBook.key.title}"></td>
+					<td th:text="${resBook.key.author}"></td>
+					<td th:text="${resBook.key.releaseYear}"></td>
+					<td th:text="${resBook.key.edition}"></td>
+					<td th:text="${resBook.value}"></td>
+					<td style="width: 100px">
+						<form action="/user/browsebooks">
+							<input class="table" type="submit" style="background-color: red" value="Remove">
+							<input type="hidden" th:value="${reservedBookIds}" th:name="reservedBookIdsInString">
+							<input type="hidden" th:value="${resBook.key.bookId}" th:name="removeBookId">
+							<input th:if="${title != null}" th:value="${title}" name="title" type="hidden">
+							<input th:if="${author != null}" th:value="${author}" name="author" type="hidden">
+							<input th:if="${showAllBooks !=null}" type="hidden" value="Show all books" name="showAllBooks">
+						</form>
+					</td>
+				</tr>
+			</table>
+			
+			<div th:if="${listedBookReservations.size() > 0}" class="row">
+			
+			<p>Please note that reserving a book doesn't mean you can pick it up right away. You will receive a notification on 
+			this account when an employee of the library has put it aside for you. It could also happen that the current user of a book doesn't
+			return the book in time, which will result in an expired reservation. In that case your reservation will be canceled.</p>
+			
+				<div class="col-50">
+					<form th:action="@{/user/browsebooks/payreservation}" th:method="PUT">
+						<input type="submit" value="Reserve books">
+						<input type="hidden" th:name="_method" th:value="PUT">
+						<input type="hidden" th:value="${reservedBookIds}" th:name="reservedBookIdsInString">
+						<input type="hidden" th:value="${listedBookReservations.size()}" th:name="amountToPay">
+					</form>
+				</div>
+				
+				<div class="col-50">
+					<p>Total order: <text th:text="${'$ ' + listedBookReservations.size() + ',-'}"></text></p>
+				</div>
+			</div>
+		
+	</div>	
+		
+		
+	 <div class="container">
+		<h3>Books</h3>
+		
+		<div class="row">
+			<form action="/user/browsebooks" method="GET">
+				<div class="col-25">
+					<Label for="title">Title</Label>
+				</div>
+				<div class="col-75">
+					<input type="text" th:value="${title}" id="title" name="title">
+				</div> 
+				
+				<div class="col-25">
+					<Label for="author">Author</Label>
+				</div>
+				<div class="col-75">
+					<input type="text" th:value="${author}" id="author" name="author">
+				</div>
+				<div>
+					<input type="submit" value="Search">
+					<input type="hidden" th:value="${reservedBookIds}" th:name="reservedBookIdsInString">				
+				</div>
+			</form>
+			
+			<form action="/user/browsebooks" method="GET">
+				<div>
+					<input style="margin-left: 20px" type="submit" value="Show all books" name="showAllBooks">
+					<input type="hidden" th:value="${reservedBookIds}" th:name="reservedBookIdsInString">
+				</div>
+			</form>
+		</div>
+		<br/>
+		
+		<div th:if="${books.size() > 0}">
+			<table id="tablestyle">
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Release Year</th>
+					<th>Edition</th>
+					<th>Return Date</th>
+					<th>End Reservation Date</th>
+					<th style="width: 100px">Reserve</th>
+				</tr>
+				<tr th:each="book : ${books}">
+					<td th:text="${book.title}"></td>
+					<td th:text="${book.author}"></td>
+					<td th:text="${book.releaseYear}"></td>
+					<td th:text="${book.edition}"></td>
+					<td th:text="${book.returnDate}"></td>
+					<td th:text="${book.endReservationDate}"></td>
+					<td th:if="${book.endReservationDate == null && userHasFine == false}">
+						<form>
+							<input class="table" type="submit" value="Reserve book">
+							<input type="hidden" th:value="${book.bookId}" th:name="reservedBookId">
+							<input type="hidden" th:value="${reservedBookIds}" th:name="reservedBookIdsInString">
+							
+							<input th:if="${title != null}" th:value="${title}" name="title" type="hidden">
+							<input th:if="${author != null}" th:value="${author}" name="author" type="hidden">
+							<input th:if="${showAllBooks !=null}" type="hidden" value="Show all books" name="showAllBooks">
+						</form>
+					</td>
+					<td th:if="${userHasFine}">
+						Not possible, reserving is blocked because you have a fine.
+					</td>
+					<td th:if="${book.endReservationDate != null && userHasFine == false}">
+						Not possible, book is already reserved.
+					</td>
+				</tr>
+				
+			</table> 
+		</div>
+		
+		
+		
+	</div>
+</body>
+</html>

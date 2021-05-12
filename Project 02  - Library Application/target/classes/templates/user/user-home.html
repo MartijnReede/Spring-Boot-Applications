@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+<ul th:replace="page-layout :: userNavBar"></ul>
+	
+	<div class="container">
+		<h2 th:text="${'Welcome' + ' ' + currentUser.firstName + ' ' + currentUser.lastName}"></h2>
+	</div>
+
+	<div class="container">
+		
+		<h3>Notifications</h3>
+		
+		<div th:if="${booksWithFines.size() == 0 && currentUser.notifications.size() == 0}">
+			<p>There are no notifications.</p>
+		</div>
+				
+		<div th:if="${currentUser.notifications.size() > 0}">
+			<div class="row" th:each="notification : ${currentUser.notifications}">
+				<div class="col-25">
+					<text th:text="${notification.notificationDate}"></text>
+				</div>
+				<div class="col-75" style="width: 90%">
+					<text th:text="${notification.notificationMessage}"></text>
+				</div>
+			</div>
+		</div>
+		
+		<div th:if="${booksWithFines.size() > 0}">			
+			<p style="color: red">WARNING</p>
+			<p>The return date of one or more books has expired. If possible, extend the return date or return the book(s) to the library as soon as possible to prevent higher fines. 
+			Until all overdue books are returned to the library, no new reservations can be made.</p>
+			
+			<table id="tablestyle">
+				<tr>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Fine</th>
+				</tr>
+				<tr th:each="book : ${booksWithFines}">
+					<td th:text="${book.key.title}"></td>
+					<td th:text="${book.key.author}"></td>
+					<td th:if="${book.value > 0}" style="color:red" th:text="${'$ ' + book.value}"></td>
+					<td th:if="${book.value == 0}" th:text="${'$ ' + book.value}"></td>
+				</tr>
+			</table>
+			
+			
+		</div>
+		
+		
+	</div>
+
+</body>
+</html>

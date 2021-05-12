@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/CSS/account-layout.css}">
+</head>
+<body>
+	<ul th:replace="page-layout :: employeeNavBar"></ul>	
+		<div class="container">
+			<h3>User info</h3>
+				
+				<div class="row">
+						<div class="col-50">	
+							Username:
+						</div>	
+						<div class="col-75">
+							<text th:text="${user.userName}">
+						</div>
+				</div>	
+				
+				<div class="row">
+						<div class="col-50">	
+							First name: 
+						</div>	
+						<div class="col-75">
+							<text th:text="${user.firstName}"/>
+						</div>
+				</div>	
+							
+				
+				<div class="row">
+						<div class="col-50">	
+							Last name:
+						</div>	
+						<div class="col-75">
+							<text th:text="${user.lastName}">
+						</div>
+				</div>	
+				
+				<div class="row">
+						<div class="col-50">	
+							Email:
+						</div>	
+						<div class="col-75">
+							<text th:text="${user.email}">
+						</div>
+				</div>	
+				
+				<div class="row">
+					<div class="col-50">
+						Address:
+					</div>	
+					<div class="col-75">
+						<text th:text="${user.address}">
+					</div>
+				</div>	
+				
+				<div class="row">
+					<div class="col-50">
+						City:
+					</div>
+					<div class="col-75">
+						<text th:text="${user.city}">
+					</div>
+				</div>	
+				
+				<div class="row">
+					<div class="col-50">
+						Phone number:
+					</div>
+					<div class="col-75">
+						<text th:text="${user.phoneNumber}">
+					</div>
+				</div>	
+				
+				<div class="row">
+					<div class="col-50">
+						Total fine: 
+					</div>
+					<div class="col-75" th:if="${fine > 0}">
+						<text style="color:red" th:text="${'$ ' + fine}">
+					</div>
+					
+					<div class="col-75" th:if="${fine == 0}">
+						<text th:text="${'$ ' + fine}">
+					</div>
+				</div>	
+		
+		<h4>Books in use</h4>
+		
+		<div th:if="${user.books.size() == 0}">
+			No books in use.
+		</div>		
+		<table id="tablestyle" th:if="${user.books.size() > 0}">
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Release Year</th>
+				<th>Edition</th>
+				<th>Return Date</th>
+				<th>Fine</th>
+			</tr>
+			<tr th:each="book : ${booksInUse}">
+				<td th:text="${book.key.title}"></td>
+				<td th:text="${book.key.author}"></td>
+				<td th:text="${book.key.releaseYear}"></td>
+				<td th:text="${book.key.edition}"></td>
+				<td th:text="${book.key.returnDate}"></td>
+				<td th:if="${book.value > 0}" style="color:red" th:text="${'$ ' + book.value}"></td>
+				<td th:if="${book.value == 0}" th:text="${'$ ' + book.value}"></td>
+			</tr>
+		</table>
+		
+		<h4>Reserved books</h4>
+		
+		<div th:if="${user.reservedBooks.size() == 0}">
+			No books reserved.
+		</div>		
+		
+		<table id="tablestyle" th:if="${user.reservedBooks.size() > 0}">
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Release Year</th>
+				<th>Edition</th>
+				<th>Reserved from</th>
+				<th>Reserved until</th>	
+			</tr>
+			<tr th:each="book : ${user.reservedBooks}">
+				<td th:text="${book.title}"></td>
+				<td th:text="${book.author}"></td>
+				<td th:text="${book.releaseYear}"></td>
+				<td th:text="${book.edition}"></td>
+				<td th:text="${book.startReservationDate}"></td>
+				<td th:text="${book.endReservationDate}"></td>
+			</tr>
+		</table>
+				
+		</div>
+</body>
+</html>

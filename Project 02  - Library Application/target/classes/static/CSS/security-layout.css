@@ -1,0 +1,162 @@
+@charset "ISO-8859-1";
+
+body {
+    background: url("/Images/library.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: Helvetica, sans-serif;
+}
+
+
+.wrapper {
+	padding-left: 300px;
+	padding-top: 200px;
+	
+}
+
+input[type=text],input[type=password], input[type=email], select, textarea {
+  width: 90%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color:#6dae67;
+  color: white;
+  padding: 12px;
+  width: 261px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.container {
+	
+  width: 350px;
+  height: 195px;	
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.incorrect{
+	color: red;
+}
+
+.logout{
+	color: green;
+}
+
+
+/*------------- REGISTER FORM ----------------*/
+
+.wrapperRegister{
+	padding-left: 250px;
+	padding-top: 50px;
+}
+
+.containerRegister {
+	
+  width: 470px;
+  height: 530px;	
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+input[type=submit].registerButton {
+  background-color:#6dae67;
+  color: white;
+  margin-right: 10px;
+  padding: 12px;
+  width: 341px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+/*---------------- LOGOUT PAGE ------------------*/
+
+input[type=submit].logoutButton {
+  background-color:#6dae67;
+  color: white;
+  margin-right: 10px;
+  padding: 12px;
+  width: 100px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+.wrapperLogout {
+	padding-left: 300px;
+	padding-top: 200px;
+}
+
+.containerLogout {
+  width: 275px;
+  height: 110px;	
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* ------------------- ACCOUNT CREATED ------------- */
+
+input[type=submit].accountCreatedButton {
+  background-color:#6dae67;
+  color: white;
+  margin-right: 10px;
+  padding: 12px;
+  width: 200px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+.wrapperAccountCreated {
+	padding-left: 300px;
+	padding-top: 200px;
+}
+
+.containerAccountCreated {
+  width: 275px;
+  height: 110px;	
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}

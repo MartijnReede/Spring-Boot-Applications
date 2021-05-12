@@ -1,0 +1,150 @@
+@charset "ISO-8859-1";
+
+/*----------------------- CONTENT LAYOUT ------------------------ */
+
+body {
+	font-family: Helvetica, sans-serif;
+	background-color: #5D5A5E;
+}
+
+.container {
+	
+  
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-top: 20px;
+  margin-right: 10%;
+  margin-left: 10%;
+  min-width: 1200px;
+  
+ 
+}
+
+
+
+/* ----------------------- NAVIGATION BAR ----------------------- */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  
+  margin-top: 20px;
+  margin-right: 10%;
+  margin-left: 10%;
+  min-width: 1235px;
+  
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.active {
+  background-color:#6dae67;
+  color: white;
+}
+
+/* ----------------------------- FORMS ----------------------------- */
+
+input[type=text],input[type=password], input[type=email], input[type=number], input[type=date], select, textarea {
+  width: 200px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color:#6dae67;
+  color: white;
+  padding: 12px;
+  width: 150px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+.col-25 {
+  float: left;
+  width: 100px;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 250px;
+  margin-top: 6px;
+}
+
+.col-50 {
+	float: left;
+	width: 175px;
+	margin-top: 6px;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ------------------- TABLE STYLE ------------------*/
+
+#tablestyle {
+ 
+  border-collapse: collapse;
+  width: 98%;
+}
+
+#tablestyle td, #tablestyle th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 12px
+}
+
+#tablestyle tr:nth-child(even){background-color: #f2f2f2;}
+
+#tablestyle tr:hover {background-color: #ddd;}
+
+#tablestyle th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color:#5D5A5E;
+  color: white;
+}
+
+input[type=submit].table {
+  background-color:#6dae67;
+  color: white;
+  padding: 5px;
+  width: 150px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+
