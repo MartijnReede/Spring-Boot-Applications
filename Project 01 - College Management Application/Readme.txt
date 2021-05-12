@@ -5,8 +5,6 @@ This is my first Spring Boot web application. The main goal was to practice with
   - H2
   - Thymeleaf
   - MVC
-  
-Check this youtube video to see the application in action: 
    
 -- FUNCTIONALITY --
 
@@ -76,9 +74,3 @@ Manage teachers:
 Manage admins: 
   - New admin accounts can be created here. 
   - A table is shown with all admin accounts.
-  
-
-
-  
- 
-  
